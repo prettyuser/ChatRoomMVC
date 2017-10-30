@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using Microsoft.AspNet.SignalR;
-using DataAccess_.Entities;
+using DataAccess.Entities;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -14,6 +14,11 @@ namespace ChatRoomMVC.Connection
         protected override Task OnConnected(IRequest request, string connectionId)
         {
             Data chatData = new Data() { Name = "Server: ", Message = "User " + connectionId + " has connected" };
+
+
+            //chatData.Message;
+            //chatData.Name;
+
             chatData.Attribute = "ConnectionInfo";
             return Connection.Broadcast(chatData);
         }

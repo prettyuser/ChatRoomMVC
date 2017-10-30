@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess_.Entities
+namespace DataAccess.Entities
 {
     public class Data
     {

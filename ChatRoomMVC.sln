@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatRoomMVC", "ChatRoomMVC\ChatRoomMVC.csproj", "{FB56029D-4AE6-4DE3-A4B2-607B4967CDD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccesss_\DataAccess.csproj", "{43BF8452-0C92-4DBA-86E7-47B0471BD033}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{43BF8452-0C92-4DBA-86E7-47B0471BD033}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{76F7F57A-2A9C-4DE9-B6E4-F19C5D88D441}"
 EndProject
