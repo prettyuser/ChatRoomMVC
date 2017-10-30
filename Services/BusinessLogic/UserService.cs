@@ -6,42 +6,29 @@ using System.Threading.Tasks;
 using DataAccess.Entities;
 using DataAccess.DBContext;
 using DataAccess.Repositories;
+using Services.Service;
+using DataAccess.UnitOfWork.Base;
+using DataAccess.Repositories.Base;
+using Services.BusinessLogic.Base;
 
 namespace Services.BusinessLogic
 {
     public class UserService
-        :IUserService
+        :EntityService<User>, IUserService
     {
-        private BaseRepository<User, EfDbContext> _baseRepository = null;
+        IUnitOfWork _unitOfWork;
+        IUserRepository _userRepository;
 
-        public void Create(User user)
+        public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository)
+          : base(unitOfWork, userRepository)
         {
-            _baseRepository.Create(user);
+            _unitOfWork = unitOfWork;
+            _userRepository = userRepository;
         }
 
-        public void Delete(int id)
+        public User GetById(int Id)
         {
-            _baseRepository.Delete(id);
-        }
-
-        public User GetItem(int id)
-        {
-            return _baseRepository.GetItem(id);
-        }
-
-        public IEnumerable<User> GetItemsList()
-        {
-            return _baseRepository.GetItemsList();
-        }
-
-        public void Save()
-        {
-            _baseRepository.Save();
-        }
-
-        public void Update(User user)
-        {
-            _baseRepository.Update(user);
+            return _userRepository.GetById(Id);
         }
     }
 }

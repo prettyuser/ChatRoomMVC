@@ -16,10 +16,10 @@ namespace DataAccess.Repositories
         : IGenericRepository<T>
         where T : BaseEntity
     {
-        protected DbContext _entities;
+        protected EfDbContext _entities;
         protected readonly IDbSet<T> _dbset;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(EfDbContext context)
         {
             _entities = context;
             _dbset = context.Set<T>();

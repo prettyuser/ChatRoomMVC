@@ -4,44 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Entities;
-using DataAccess.Repositories;
 using DataAccess.DBContext;
+using DataAccess.Repositories;
+using Services.Service;
+using DataAccess.UnitOfWork.Base;
+using DataAccess.Repositories.Base;
+using Services.BusinessLogic.Base;
 
 namespace Services.BusinessLogic
 {
     public class MessageService
-        :IMessageService
+        : EntityService<Message>, IMessageService
     {
-        private BaseRepository<Message, EfDbContext> _baseRepository = null; 
+        IUnitOfWork _unitOfWork;
+        IMessageRepository _messageRepository;
 
-        public void Create(Message message)
+        public MessageService(IUnitOfWork unitOfWork, IMessageRepository messageRepository)
+          : base(unitOfWork, messageRepository)
         {
-            _baseRepository.Create(message);
+            _unitOfWork = unitOfWork;
+            _messageRepository = messageRepository;
         }
 
-        public void Delete(int id)
+        public Message GetById(long Id)
         {
-            _baseRepository.Delete(id);
-        }
-
-        public Message GetItem(int id)
-        {
-            return _baseRepository.GetItem(id);
-        }
-
-        public IEnumerable<Message> GetItemsList()
-        {
-            return _baseRepository.GetItemsList();
-        }
-
-        public void Save()
-        {
-            _baseRepository.Save();
-        }
-
-        public void Update(Message message)
-        {
-            _baseRepository.Update(message);
+            return _messageRepository.GetById(Id);
         }
     }
 }

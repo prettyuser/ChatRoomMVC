@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.DTO
+namespace Services.Service.Base
 {
-    public class UserDTO
+    public interface IService
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
     }
 }

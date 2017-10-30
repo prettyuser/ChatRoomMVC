@@ -1,4 +1,5 @@
-﻿using DataAccess.Entities;
+﻿using DataAccess.DBContext;
+using DataAccess.Entities;
 using DataAccess.Repositories.Base;
 using System;
 using System.Collections.Generic;
@@ -10,69 +11,23 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    class UserRepository 
-        :AbstractRepository, IRepository<Message> 
+    public class UserRepository
+        : GenericRepository<User>, IUserRepository
     {
-        private bool disposed = false;
-
-        public Message Get(Expression<Func<Message, bool>> filter)
+        public UserRepository(EfDbContext context)
+           : base(context)
         {
-            throw new NotImplementedException();
+
         }
 
-        public void Create(Message item)
+        public override IEnumerable<User> GetAll()
         {
-            _context.Users.Add(item);
+            return _entities.Set<User>().Include(x => x.Messages).AsEnumerable();
         }
 
-        public void Delete(int id)
+        public User GetById(long id)
         {
-            Message user = _context.Users.Find(id);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
-            }
-        }
-
-        public virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        public Message GetItem(int id)
-        {
-            return _context
-                .Users
-                .Find(id);
-        }
-
-        public IEnumerable<Message> GetItemsList()
-        {
-            return _context
-                .Users;
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
-        public void Update(Message item)
-        {
-            _context.Entry(item).State = EntityState.Modified;
+            return _dbset.Include(x => x.Messages).Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }

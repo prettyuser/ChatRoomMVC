@@ -10,22 +10,13 @@ namespace DataAccess.DBContext
 {
     public class EfDbContext : DbContext
     {
-        public EfDbContext() :
-            base("DefaultConnection")
+        public EfDbContext() 
+            : base("Name=EfDbContext")
         {
             
         }
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    //modelBuilder.Entity<Message>()
-        //    //    .HasMany(z => z.MessageText)
-        //    //    .WithRequired(y => y.User);
-
-        //    base.OnModelCreating(modelBuilder);
-        //}
     }
 }

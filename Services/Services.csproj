@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,18 +45,23 @@
     <Compile Include="BusinessLogic\Base\IUserService.cs" />
     <Compile Include="BusinessLogic\MessageService.cs" />
     <Compile Include="BusinessLogic\UserService.cs" />
-    <Compile Include="DTO\MessageDTO.cs" />
-    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Base\IEntityService.cs" />
+    <Compile Include="Service\Base\IService.cs" />
+    <Compile Include="Service\EntityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessLogic\Exceptions\" />
+    <Folder Include="DTO\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{43bf8452-0c92-4dba-86e7-47b0471bd033}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

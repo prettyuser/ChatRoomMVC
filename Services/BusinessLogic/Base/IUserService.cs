@@ -1,19 +1,16 @@
 ﻿using DataAccess.Entities;
+using Services.Service.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.BusinessLogic
+namespace Services.BusinessLogic.Base
 {
-    public interface IUserService
+    public interface IUserService 
+        : IEntityService<User>
     {
-        IEnumerable<User> GetItemsList();
-        User GetItem(int id);
-        void Create(User user);
-        void Update(User user);
-        void Delete(int id);
-        void Save();
+        User GetById(int Id);
     }
 }

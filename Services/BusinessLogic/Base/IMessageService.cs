@@ -1,19 +1,16 @@
 ﻿using DataAccess.Entities;
+using Services.Service.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.BusinessLogic
+namespace Services.BusinessLogic.Base
 {
-    public interface IMessageService
+    public interface IMessageService 
+        : IEntityService<Message>
     {
-        IEnumerable<Message> GetItemsList();
-        Message GetItem(int id);
-        void Create(Message message);
-        void Update(Message message);
-        void Delete(int id);
-        void Save();
+        Message GetById(long Id);
     }
 }
